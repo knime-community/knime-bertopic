@@ -1,5 +1,5 @@
 [workspace]
-channels = ["knime", "conda-forge"]
+channels = ["knime/label/nightly", "knime", "conda-forge"]
 platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
 
 [tasks]
@@ -12,7 +12,7 @@ pytest = "*"
 ruff = "*"
 knime-extension = "*"
 knime-python-base = "*"
-knime-python-versions = "5.12.*"
+knime-python-versions = "5.13.*"
 pixi-pycharm = ">=0.0.8,<0.0.9"
 bertopic = "==0.17.4"
 sentence-transformers = "==5.3.0"
@@ -26,7 +26,7 @@ python-flair = "*"
 
 [feature.build.dependencies]
 python = "*"
-knime-extension-bundling = "5.12.*"
+knime-extension-bundling = "6.*"
 
 [feature.debug.dependencies]
 debugpy = "*"
