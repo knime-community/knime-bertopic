@@ -429,15 +429,15 @@ class BERTopicNode:
 
         try:
             if calc_probs:
-                topics, probabilities = topic_model.fit_transform(documents)
+                topics, probabilities = topic_model.fit_transform(documents, embeddings=embeddings)
             else:
-                topics = topic_model.fit_transform(documents)
+                topics = topic_model.fit_transform(documents, embeddings=embeddings)
                 probabilities = None
         except AttributeError as e:
             if "prediction_data" in str(e) and self.hdbscan_metric == "cosine":
                 LOGGER.warning("HDBSCAN generic algorithm failed to provide prediction data. Retrying without probabilities.")
                 topic_model.calculate_probabilities = False
-                topics = topic_model.fit_transform(documents)
+                topics = topic_model.fit_transform(documents, embeddings=embeddings)
                 probabilities = None
             else:
                 raise e
